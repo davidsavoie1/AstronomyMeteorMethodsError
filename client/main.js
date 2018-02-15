@@ -1,23 +1,4 @@
-import { Mongo } from 'meteor/mongo';
-import { Class } from 'meteor/jagi:astronomy';
-import './main.html';
-
-// Astronomy class collection
-const Test = Class.create({
-  name: 'Test',
-  collection: new Mongo.Collection('tests'),
-  fields: {
-    /* Fields */
-  },
-  meteorMethods: {
-    failMethod() {
-      throw new Meteor.Error('blabla', 'because blabla');
-    },
-    successMethod() {
-      return this.save();
-    },
-  },
-});
+import Test from '/imports/Test';
 
 const test1 = new Test();
 test1.successMethod((err, res) => {
