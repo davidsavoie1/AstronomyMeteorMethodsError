@@ -8,12 +8,22 @@ const Test = Class.create({
   fields: {
     /* Fields */
   },
+  events: {
+    beforeSave(e) {
+      throw new Meteor.Error('save-error', 'Could not save!');
+    },
+  },
+  helpers: {
+    helper() {
+      throw new Meteor.Error('helper-error', 'because blabla');
+    },
+  },
   meteorMethods: {
     failMethod() {
-      throw new Meteor.Error('blabla', 'because blabla');
+      throw new Meteor.Error('failMethod-error', 'because blabla');
     },
     successMethod() {
-      return this.save();
+      return true;
     },
   },
 });
